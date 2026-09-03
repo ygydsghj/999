@@ -2,7 +2,11 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes, viewport-fit=cover">
+    <!-- ===== 关键修复：视口强制适配 ===== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <!-- ===== 安卓 WebView 专用修复 ===== -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no, email=no">
     <meta name="color-scheme" content="light dark">
     <title>系统迁移 · 安全声明</title>
@@ -15,9 +19,12 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* ===== 安卓字体修复 ===== */
         html {
             font-size: 16px;
-            -webkit-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100% !important;
+            text-size-adjust: 100% !important;
+            -moz-text-size-adjust: 100% !important;
         }
 
         body {
@@ -34,6 +41,9 @@
             padding: clamp(12px, 3vw, 30px);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            /* ===== 安卓字体缩放强制 ===== */
+            -webkit-text-size-adjust: 100% !important;
+            text-size-adjust: 100% !important;
         }
 
         /* ===== 容器 ===== */
@@ -77,7 +87,7 @@
             -webkit-backdrop-filter: blur(8px);
             color: #c2e2ff;
             border-radius: 60px;
-            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            font-size: clamp(14px, 2.8vw, 16px);
             font-weight: 600;
             letter-spacing: 0.04em;
             margin-bottom: clamp(16px, 3vw, 24px);
@@ -88,7 +98,7 @@
 
         /* ===== 标题 ===== */
         .title {
-            font-size: clamp(1.6rem, 5.5vw, 2.4rem);
+            font-size: clamp(28px, 5.5vw, 40px);
             font-weight: 750;
             background: linear-gradient(125deg, #FFFFFF, #cae3ff);
             background-clip: text;
@@ -102,7 +112,7 @@
 
         /* ===== 描述 ===== */
         .desc {
-            font-size: clamp(0.9rem, 4vw, 1.1rem);
+            font-size: clamp(16px, 3.8vw, 20px);
             line-height: 1.6;
             color: #e2ecff;
             max-width: 100%;
@@ -124,11 +134,11 @@
 
         .site {
             width: 100%;
-            font-size: clamp(1.1rem, 5.5vw, 1.7rem);
+            font-size: clamp(20px, 5.5vw, 30px);
             font-weight: 620;
             color: #aaf0ff;
             background: rgba(0, 20, 45, 0.7);
-            padding: clamp(12px, 2.5vw, 18px) clamp(10px, 2vw, 16px);
+            padding: clamp(14px, 2.5vw, 20px) clamp(10px, 2vw, 16px);
             border-radius: clamp(20px, 3.5vw, 28px);
             border: 1px solid rgba(56, 189, 248, 0.65);
             word-break: break-all;
@@ -144,7 +154,7 @@
             -webkit-backdrop-filter: blur(4px);
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
             touch-action: manipulation;
-            min-height: clamp(48px, 8vw, 64px);
+            min-height: clamp(52px, 8vw, 68px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -162,12 +172,12 @@
             align-items: center;
             justify-content: center;
             gap: clamp(8px, 1.5vw, 14px);
-            padding: clamp(12px, 2.2vw, 16px) clamp(24px, 4vw, 36px);
+            padding: clamp(14px, 2.2vw, 18px) clamp(28px, 4vw, 40px);
             background: linear-gradient(105deg, #2c7be0, #1a4f96);
             color: #ffffff;
             border-radius: 80px;
             font-weight: 650;
-            font-size: clamp(0.95rem, 4.2vw, 1.15rem);
+            font-size: clamp(17px, 4.2vw, 22px);
             cursor: pointer;
             user-select: none;
             -webkit-user-select: none;
@@ -176,8 +186,8 @@
             box-shadow: 0 12px 22px -10px rgba(0, 40, 80, 0.5);
             margin-bottom: clamp(10px, 1.8vw, 16px);
             text-align: center;
-            min-width: clamp(180px, 40vw, 260px);
-            min-height: 48px;
+            min-width: clamp(180px, 40vw, 280px);
+            min-height: 52px;
             letter-spacing: 0.4px;
             touch-action: manipulation;
         }
@@ -189,11 +199,11 @@
 
         /* ===== 提示 ===== */
         .tip {
-            font-size: clamp(0.72rem, 3.2vw, 0.85rem);
+            font-size: clamp(13px, 3vw, 16px);
             color: #b6caf0;
             background: rgba(0, 0, 0, 0.35);
             display: inline-block;
-            padding: clamp(4px, 1vw, 8px) clamp(16px, 3vw, 24px);
+            padding: clamp(6px, 1vw, 10px) clamp(18px, 3vw, 28px);
             border-radius: 50px;
             text-align: center;
             backdrop-filter: blur(4px);
@@ -212,9 +222,9 @@
             background: rgba(46, 204, 113, 0.1);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            padding: clamp(6px, 1.2vw, 10px) clamp(18px, 3vw, 28px);
+            padding: clamp(8px, 1.2vw, 12px) clamp(20px, 3vw, 32px);
             border-radius: 60px;
-            font-size: clamp(0.8rem, 3.6vw, 0.92rem);
+            font-size: clamp(15px, 3.6vw, 18px);
             font-weight: 600;
             color: #caf5df;
             border: 0.5px solid rgba(46, 204, 113, 0.35);
@@ -222,8 +232,8 @@
 
         .dot {
             display: inline-block;
-            width: clamp(10px, 1.8vw, 13px);
-            height: clamp(10px, 1.8vw, 13px);
+            width: clamp(12px, 1.8vw, 16px);
+            height: clamp(12px, 1.8vw, 16px);
             background: #2ecc71;
             border-radius: 50%;
             box-shadow: 0 0 8px #2ecc71;
@@ -255,7 +265,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: clamp(20px, 3.5vw, 32px);
-            padding: clamp(16px, 3vw, 24px);
+            padding: clamp(18px, 3vw, 26px);
             margin-top: clamp(20px, 3.5vw, 32px);
             margin-bottom: clamp(10px, 1.8vw, 16px);
             text-align: left;
@@ -265,7 +275,7 @@
 
         .security-title {
             font-weight: 720;
-            font-size: clamp(0.95rem, 4.2vw, 1.15rem);
+            font-size: clamp(17px, 4.2vw, 22px);
             color: #cae6ff;
             display: flex;
             align-items: center;
@@ -278,9 +288,9 @@
         }
 
         .security-title .sub-badge {
-            font-size: clamp(0.6rem, 2.5vw, 0.72rem);
+            font-size: clamp(11px, 2.5vw, 14px);
             background: #38bdf820;
-            padding: clamp(3px, 0.6vw, 6px) clamp(10px, 2vw, 16px);
+            padding: clamp(4px, 0.6vw, 8px) clamp(12px, 2vw, 18px);
             border-radius: 40px;
             font-weight: 500;
             color: #b0daff;
@@ -288,7 +298,7 @@
         }
 
         .security-quote {
-            font-size: clamp(0.9rem, 4vw, 1.05rem);
+            font-size: clamp(16px, 4vw, 20px);
             line-height: 1.7;
             color: #f2f7ff;
             background: rgba(0, 0, 0, 0.4);
@@ -311,7 +321,7 @@
         }
 
         .security-footer-text {
-            font-size: clamp(0.85rem, 3.8vw, 0.98rem);
+            font-size: clamp(15px, 3.8vw, 19px);
             color: #d0e4ff;
             margin: clamp(8px, 1.5vw, 14px) 0 0 4px;
             font-weight: 530;
@@ -333,8 +343,8 @@
         .badge {
             background: rgba(56, 189, 248, 0.15);
             border-radius: 60px;
-            padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 18px);
-            font-size: clamp(0.7rem, 3.2vw, 0.82rem);
+            padding: clamp(8px, 1vw, 12px) clamp(14px, 2vw, 20px);
+            font-size: clamp(13px, 3vw, 16px);
             font-weight: 540;
             color: #d4ebff;
             border: 0.5px solid rgba(56, 189, 248, 0.45);
@@ -347,13 +357,13 @@
         @media (max-width: 400px) {
             .badge {
                 white-space: normal;
-                font-size: clamp(0.65rem, 3vw, 0.75rem);
+                font-size: clamp(12px, 3vw, 14px);
             }
         }
 
         /* ===== 页脚 ===== */
         .footer-note {
-            font-size: clamp(0.7rem, 3.2vw, 0.8rem);
+            font-size: clamp(13px, 3vw, 16px);
             color: #95b0da;
             text-align: center;
             margin-top: clamp(16px, 3vw, 24px);
@@ -374,9 +384,9 @@
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
             color: white;
-            padding: clamp(10px, 2vw, 16px) clamp(20px, 4vw, 36px);
+            padding: clamp(12px, 2vw, 18px) clamp(24px, 4vw, 40px);
             border-radius: 80px;
-            font-size: clamp(0.85rem, 3.6vw, 1rem);
+            font-size: clamp(15px, 3.6vw, 18px);
             display: none;
             z-index: 1000;
             white-space: nowrap;
@@ -396,7 +406,7 @@
                 white-space: normal;
                 max-width: 92vw;
                 text-align: center;
-                padding: clamp(10px, 2vw, 14px) clamp(16px, 3.5vw, 24px);
+                padding: clamp(12px, 2vw, 16px) clamp(18px, 3.5vw, 28px);
                 bottom: clamp(16px, 4vw, 30px);
             }
         }
@@ -417,6 +427,47 @@
             .site:active,
             .btn-copy:active {
                 transform: none;
+            }
+        }
+
+        /* ===== 安卓 WebView 专用修复 ===== */
+        @media screen and (max-width: 480px) {
+            /* 确保所有文字不小于 14px（防止安卓自动缩放） */
+            body,
+            .container,
+            .tag,
+            .title,
+            .desc,
+            .site,
+            .btn-copy,
+            .tip,
+            .status,
+            .security-title,
+            .security-quote,
+            .security-footer-text,
+            .badge,
+            .footer-note,
+            .toast {
+                font-size: 16px !important;
+                /* 基础字体锁定 */
+            }
+
+            /* 标题单独放大 */
+            .title {
+                font-size: 28px !important;
+            }
+
+            .site {
+                font-size: 22px !important;
+            }
+
+            .btn-copy {
+                font-size: 18px !important;
+                padding: 14px 20px !important;
+            }
+
+            .security-quote {
+                font-size: 16px !important;
             }
         }
     </style>
@@ -496,7 +547,6 @@
             function showToastMessage(msg) {
                 if (!toastEl) return;
 
-                // 清除之前的定时器
                 if (toastTimer) {
                     clearTimeout(toastTimer);
                     toastTimer = null;
@@ -507,7 +557,6 @@
 
                 toastTimer = setTimeout(function() {
                     toastEl.style.display = "none";
-                    // 重置内容
                     setTimeout(function() {
                         if (toastEl) toastEl.innerHTML = "✓ 复制成功";
                     }, 100);
@@ -515,9 +564,8 @@
                 }, 2000);
             }
 
-            // ===== 复制逻辑（兼容所有浏览器） =====
+            // ===== 复制逻辑 =====
             function copyDomain() {
-                // 优先使用 Clipboard API
                 if (navigator.clipboard && window.isSecureContext) {
                     navigator.clipboard.writeText(DOMAIN).then(function() {
                         showToastMessage("📋 复制成功 · " + DOMAIN);
@@ -529,9 +577,8 @@
                 }
             }
 
-            // ===== 降级方案（iOS 老版本/非安全上下文） =====
+            // ===== 降级方案 =====
             function fallbackCopy() {
-                // 尝试使用临时 input 元素
                 var tempInput = document.createElement("input");
                 tempInput.value = DOMAIN;
                 tempInput.style.position = "fixed";
@@ -541,7 +588,6 @@
                 tempInput.style.pointerEvents = "none";
                 document.body.appendChild(tempInput);
 
-                // 针对 iOS 需要 select
                 tempInput.select();
                 tempInput.setSelectionRange(0, DOMAIN.length);
 
@@ -557,21 +603,17 @@
                 if (success) {
                     showToastMessage("📋 复制成功 · " + DOMAIN);
                 } else {
-                    // 终极方案：提示用户手动复制
                     showToastMessage("⚠️ 请长按域名手动复制");
                 }
             }
 
             // ===== 事件绑定 =====
-
-            // 按钮点击
             if (copyButton) {
                 copyButton.addEventListener("click", function(e) {
                     e.preventDefault();
                     copyDomain();
                 });
 
-                // 触控优化
                 copyButton.addEventListener("touchstart", function() {
                     this.style.transform = "scale(0.97)";
                 }, { passive: true });
@@ -581,14 +623,12 @@
                 }, { passive: true });
             }
 
-            // 域名点击
             if (domainElement) {
                 domainElement.addEventListener("click", function(e) {
                     e.stopPropagation();
                     copyDomain();
                 });
 
-                // 键盘支持（无障碍）
                 domainElement.addEventListener("keydown", function(e) {
                     if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
@@ -596,7 +636,6 @@
                     }
                 });
 
-                // 触控反馈
                 domainElement.addEventListener("touchstart", function() {
                     this.style.transform = "scale(0.98)";
                 }, { passive: true });
@@ -618,7 +657,6 @@
                 });
             }
 
-            // ===== 日志 =====
             console.log("[迁移公告] 域名: " + DOMAIN);
 
         })();
