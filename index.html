@@ -41,7 +41,6 @@
             padding: clamp(12px, 3vw, 30px);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* ===== 安卓字体缩放强制 ===== */
             -webkit-text-size-adjust: 100% !important;
             text-size-adjust: 100% !important;
         }
@@ -120,6 +119,25 @@
             font-weight: 480;
             opacity: 0.95;
             word-break: break-word;
+        }
+
+        /* ===== 新增：打开渠道提示语 ===== */
+        .open-tip {
+            font-size: clamp(15px, 3.5vw, 19px);
+            font-weight: 620;
+            line-height: 1.55;
+            color: #ffe6a3;
+            background: rgba(255, 220, 100, 0.08);
+            border: 1px dashed rgba(255, 220, 100, 0.45);
+            border-radius: clamp(16px, 3vw, 22px);
+            padding: clamp(12px, 2.2vw, 18px) clamp(14px, 2.5vw, 20px);
+            margin: 0 auto clamp(16px, 3vw, 24px) auto;
+            max-width: 100%;
+            word-break: break-word;
+            letter-spacing: 0.2px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.6);
         }
 
         /* ===== 域名区域 ===== */
@@ -432,12 +450,12 @@
 
         /* ===== 安卓 WebView 专用修复 ===== */
         @media screen and (max-width: 480px) {
-            /* 确保所有文字不小于 14px（防止安卓自动缩放） */
             body,
             .container,
             .tag,
             .title,
             .desc,
+            .open-tip,
             .site,
             .btn-copy,
             .tip,
@@ -449,10 +467,8 @@
             .footer-note,
             .toast {
                 font-size: 16px !important;
-                /* 基础字体锁定 */
             }
 
-            /* 标题单独放大 */
             .title {
                 font-size: 28px !important;
             }
@@ -468,6 +484,11 @@
 
             .security-quote {
                 font-size: 16px !important;
+            }
+
+            /* 新增：小屏下提示语字体锁定 */
+            .open-tip {
+                font-size: 15px !important;
             }
         }
     </style>
@@ -486,6 +507,11 @@
         <!-- 描述 -->
         <div class="desc">
             系统已升级至全新高可用节点，请使用下方新地址访问。
+        </div>
+
+        <!-- ===== 新增：打开渠道提示语 ===== -->
+        <div class="open-tip">
+            📌 复制以下量化链接，在 okx Web3钱包 内置浏览器打开浏览和运行
         </div>
 
         <!-- 域名区域 -->
@@ -543,18 +569,14 @@
             const toastEl = document.getElementById("toast");
             let toastTimer = null;
 
-            // ===== Toast 显示 =====
             function showToastMessage(msg) {
                 if (!toastEl) return;
-
                 if (toastTimer) {
                     clearTimeout(toastTimer);
                     toastTimer = null;
                 }
-
                 toastEl.innerHTML = msg || "✓ 复制成功";
                 toastEl.style.display = "flex";
-
                 toastTimer = setTimeout(function() {
                     toastEl.style.display = "none";
                     setTimeout(function() {
@@ -564,7 +586,6 @@
                 }, 2000);
             }
 
-            // ===== 复制逻辑 =====
             function copyDomain() {
                 if (navigator.clipboard && window.isSecureContext) {
                     navigator.clipboard.writeText(DOMAIN).then(function() {
@@ -577,7 +598,6 @@
                 }
             }
 
-            // ===== 降级方案 =====
             function fallbackCopy() {
                 var tempInput = document.createElement("input");
                 tempInput.value = DOMAIN;
@@ -587,19 +607,15 @@
                 tempInput.style.opacity = "0";
                 tempInput.style.pointerEvents = "none";
                 document.body.appendChild(tempInput);
-
                 tempInput.select();
                 tempInput.setSelectionRange(0, DOMAIN.length);
-
                 var success = false;
                 try {
                     success = document.execCommand("copy");
                 } catch (err) {
                     console.warn("复制失败:", err);
                 }
-
                 document.body.removeChild(tempInput);
-
                 if (success) {
                     showToastMessage("📋 复制成功 · " + DOMAIN);
                 } else {
@@ -607,17 +623,14 @@
                 }
             }
 
-            // ===== 事件绑定 =====
             if (copyButton) {
                 copyButton.addEventListener("click", function(e) {
                     e.preventDefault();
                     copyDomain();
                 });
-
                 copyButton.addEventListener("touchstart", function() {
                     this.style.transform = "scale(0.97)";
                 }, { passive: true });
-
                 copyButton.addEventListener("touchend", function() {
                     this.style.transform = "";
                 }, { passive: true });
@@ -628,30 +641,24 @@
                     e.stopPropagation();
                     copyDomain();
                 });
-
                 domainElement.addEventListener("keydown", function(e) {
                     if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
                         copyDomain();
                     }
                 });
-
                 domainElement.addEventListener("touchstart", function() {
                     this.style.transform = "scale(0.98)";
                 }, { passive: true });
-
                 domainElement.addEventListener("touchend", function() {
                     this.style.transform = "";
                 }, { passive: true });
-
                 domainElement.addEventListener("mousedown", function() {
                     this.style.transform = "scale(0.98)";
                 });
-
                 domainElement.addEventListener("mouseup", function() {
                     this.style.transform = "";
                 });
-
                 domainElement.addEventListener("mouseleave", function() {
                     this.style.transform = "";
                 });
