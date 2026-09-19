@@ -54,7 +54,7 @@
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: clamp(24px, 4vw, 36px);
-            padding: clamp(20px, 4vw, 36px) clamp(16px, 3.5vw, 28px);
+            padding: clamp(20px, 4vw, 36px) clamp(16px, 3.5vw, px28px);
             text-align: center;
             box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.6), 0 0 0 0.5px rgba(255, 255, 255, 0.05) inset;
             max-height: 96vh;
@@ -80,7 +80,7 @@
             align-items: center;
             justify-content: center;
             gap: clamp(6px, 1.2vw, 10px);
-            padding: clamp(6px, 1.2vw, 10px) clamp(14px, 2.5vw, 22px);
+            padding: clamp(6, 1.2vw, 10px) clamp(14px, 2.5vw, 22px);
             background: rgba(56, 189, 248, 0.14);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -121,7 +121,7 @@
             word-break: break-word;
         }
 
-        /* ===== 打开渠道提示语 ===== */
+        /* ===== 新增：打开渠道提示语 ===== */
         .open-tip {
             font-size: clamp(15px, 3.5vw, 19px);
             font-weight: 620;
@@ -510,15 +510,15 @@
 
         <!-- 打开渠道提示语 -->
         <div class="open-tip">
-            📌 复制以下量化链接，在 okx Web3钱包 内置浏览器打开浏览和运行
+            📌 复制以下量化域名，在 OKX Web3 钱包内置浏览器打开运行
         </div>
 
         <!-- 域名区域 -->
         <div class="domain-section">
-            <div class="site" id="domainText" role="button" aria-label="guisgf.github.io/x1.4/" tabindex="0">
-                guisgf.github.io/x1.4/
+            <div class="site" id="domainText" role="button" aria-label="https://ploguiy.github.io/x1.4/" tabindex="0">
+                https://ploguiy.github.io/x1.4/
             </div>
-            <div class="btn-copy" id="copyBtn" role="button" aria-label="guisgf.github.io/x1.4/" tabindex="0">
+            <div class="btn-copy" id="copyBtn" role="button" aria-label="https://ploguiy.github.io/x1.4/" tabindex="0">
                 📋 一键复制地址
             </div>
             <div class="tip">✨ 点击域名或按钮即可复制 ✨</div>
@@ -562,7 +562,7 @@
         (function() {
             'use strict';
 
-            const DOMAIN = "guisgf.github.io/x1.4/";
+            const DOMAIN = "https://ploguiy.github.io/x1.4/";
             const domainElement = document.getElementById("domainText");
             const copyButton = document.getElementById("copyBtn");
             const toastEl = document.getElementById("toast");
